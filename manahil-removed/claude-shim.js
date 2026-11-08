@@ -194,6 +194,15 @@
       },
       update: async function (patch) {
         var p = plain(patch);
+        if (name === "settings") {         // the settings records do not exist in a new database; create them on first save
+          var ex = await sb.from("documents").select("id").eq("collection", name).eq("id", id).maybeSingle();
+          if (!ex.error && !ex.data) {
+            var c = await sb.rpc("doc_set", { p_coll: name, p_id: id, p_data: p });
+            if (c.error) throw fail(c.error, "save " + name + "/" + id);
+            applySet(name, id, p);
+            return;
+          }
+        }
         var r = await sb.rpc("doc_update", { p_coll: name, p_id: id, p_patch: p });
         if (r.error) throw fail(r.error, "update " + name + "/" + id);
         applyMerge(name, id, p);
@@ -238,8 +247,8 @@
       var uu = (ids || []).map(strip).filter(isUuid);
       var out = {};
       if (!uu.length) return out;
-      var r = await sb.from("profiles").select("id,name,avatar_url").in("id", uu);
-      (r.data || []).forEach(function (p) { out[PREFIX + p.id] = { name: p.name || "Unnamed", avatarUrl: p.avatar_url || avatar(p.name) }; });
+      var r = await sb.from("profiles").select(ME && ME.isOwner ? "id,name,avatar_url,email" : "id,name,avatar_url").in("id", uu);
+      (r.data || []).forEach(function (p) { out[PREFIX + p.id] = { name: p.name || "Unnamed", avatarUrl: p.avatar_url || avatar(p.name), email: p.email || "" }; });
       return out;
     },
     search: async function (q) {

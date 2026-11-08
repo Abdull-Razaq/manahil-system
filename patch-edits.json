@@ -123,7 +123,61 @@
  {
   "label": "Arabic for the new and changed sentences",
   "from": "const AR={\"MANAHIL EDUCATION CENTER\":",
-  "to": "const AR={\"Could not connect to the database. Check your internet connection and reload the page.\":\"تعذّر الاتصال بقاعدة البيانات. تحقّق من اتصالك بالإنترنت ثم أعد تحميل الصفحة.\",\"1. Give the parent the website address. They create an account and sign in.\":\"1. أعطِ ولي الأمر عنوان الموقع. ينشئ حسابًا ثم يسجّل الدخول.\",\"Your request could not be sent. Check your connection and try again.\":\"تعذّر إرسال طلبك. تحقّق من اتصالك وحاول مرة أخرى.\",\"How people get access\":\"كيف يحصل الأشخاص على الصلاحية\",\"1. Staff create an account on the sign-in page and tap the access they need. They then appear below under Waiting.\":\"1. ينشئ الموظفون حسابًا في صفحة تسجيل الدخول ويختارون الصلاحية التي يحتاجونها، ثم يظهرون أدناه تحت «بالانتظار».\",\"2. Tap Approve, or choose another role from the list. Until you do, they can see nothing.\":\"2. اضغط «اعتماد» أو اختر دورًا آخر من القائمة. وإلى أن تفعل ذلك لن يتمكنوا من رؤية أي شيء.\",\"{}People create their own account with an email and password. They can see nothing until you give them a role.\":\"{}ينشئ الأشخاص حساباتهم بأنفسهم بالبريد الإلكتروني وكلمة المرور، ولا يرون أي شيء حتى تمنحهم دورًا.\",\"To give someone access:\":\"لمنح شخص صلاحية الوصول:\",\"Ask them to open the system's web address and tap Create account.\":\"اطلب منهم فتح عنوان النظام والضغط على «إنشاء حساب».\",\"They tap the access they need on the waiting screen.\":\"يختارون الصلاحية التي يحتاجونها في شاشة الانتظار.\",\"Tap Manage who can use the system above and approve them.\":\"اضغط «إدارة من يمكنه استخدام النظام» أعلاه ثم وافق عليهم.\",\"To remove someone, set their role to No access in that list.\":\"لإزالة شخص، اجعل دوره «بلا صلاحية» في تلك القائمة.\",\"👥 1 person is waiting for access.\":\"👥 شخص واحد ينتظر الصلاحية.\",\"👥 {} people are waiting for access.\":\"👥 {} أشخاص ينتظرون الصلاحية.\",\"First opened {}\":\"أول فتح {}\",\"⚙ Settings\":\"⚙ الإعدادات\",\"Settings are for the owner only.\":\"الإعدادات للمالك فقط.\",\"Approve {}\":\"اعتماد {}\",\"MANAHIL EDUCATION CENTER\":",
+  "to": "const AR={\"Could not connect to the database. Check your internet connection and reload the page.\":\"تعذّر الاتصال بقاعدة البيانات. تحقّق من اتصالك بالإنترنت ثم أعد تحميل الصفحة.\",\"1. Give the parent the website address. They create an account and sign in.\":\"1. أعطِ ولي الأمر عنوان الموقع. ينشئ حسابًا ثم يسجّل الدخول.\",\"Your request could not be sent. Check your connection and try again.\":\"تعذّر إرسال طلبك. تحقّق من اتصالك وحاول مرة أخرى.\",\"How people get access\":\"كيف يحصل الأشخاص على الصلاحية\",\"1. Staff create an account on the sign-in page and tap the access they need. They then appear below under Waiting.\":\"1. ينشئ الموظفون حسابًا في صفحة تسجيل الدخول ويختارون الصلاحية التي يحتاجونها، ثم يظهرون أدناه تحت «بالانتظار».\",\"2. Tap Approve, or choose another role from the list. Until you do, they can see nothing.\":\"2. اضغط «اعتماد» أو اختر دورًا آخر من القائمة. وإلى أن تفعل ذلك لن يتمكنوا من رؤية أي شيء.\",\"{}People create their own account with an email and password. They can see nothing until you give them a role.\":\"{}ينشئ الأشخاص حساباتهم بأنفسهم بالبريد الإلكتروني وكلمة المرور، ولا يرون أي شيء حتى تمنحهم دورًا.\",\"To give someone access:\":\"لمنح شخص صلاحية الوصول:\",\"Ask them to open the system's web address and tap Create account.\":\"اطلب منهم فتح عنوان النظام والضغط على «إنشاء حساب».\",\"They tap the access they need on the waiting screen.\":\"يختارون الصلاحية التي يحتاجونها في شاشة الانتظار.\",\"Tap Manage who can use the system above and approve them.\":\"اضغط «إدارة من يمكنه استخدام النظام» أعلاه ثم وافق عليهم.\",\"To remove someone, set their role to No access in that list.\":\"لإزالة شخص، اجعل دوره «بلا صلاحية» في تلك القائمة.\",\"👥 1 person is waiting for access.\":\"👥 شخص واحد ينتظر الصلاحية.\",\"👥 {} people are waiting for access.\":\"👥 {} أشخاص ينتظرون الصلاحية.\",\"First opened {}\":\"أول فتح {}\",\"⚙ Settings\":\"⚙ الإعدادات\",\"Settings are for the owner only.\":\"الإعدادات للمالك فقط.\",\"Approve {}\":\"اعتماد {}\",\"Gate and leave-out passes: issues passes, records when a student leaves and returns (signed by the guard) and sees visiting days. No fees, marks or student files.\":\"البوابة وتصاريح الخروج: يصدر التصاريح، ويسجّل خروج الطالب وعودته (بتوقيع الحارس)، ويطّلع على أيام الزيارة. لا رسوم ولا درجات ولا ملفات طلاب.\",\"To remove someone, set their role to No access here.\":\"لإزالة شخص، اجعل دوره «بلا صلاحية» هنا.\",\"Find someone by name or email\":\"ابحث عن شخص بالاسم أو البريد الإلكتروني\",\"Nobody found. People appear here once they have created an account.\":\"لم يُعثر على أحد. يظهر الأشخاص هنا بعد إنشاء حساب.\",\"MANAHIL EDUCATION CENTER\":",
+  "expected": 1
+ },
+ {
+  "label": "security may issue and cancel leave-out passes",
+  "from": "const GATE_W=new Set([\"leaveOut\",\"leaveBack\",\"leaveBackAt\"]);",
+  "to": "const GATE_W=new Set([\"leaveOut\",\"leaveBack\",\"leaveBackAt\",\"leaveAdd\",\"leaveCancel\"]);",
+  "expected": 1
+ },
+ {
+  "label": "leave-out form is a gate form",
+  "from": "leaveForm:\"acad\"",
+  "to": "leaveForm:\"gate\"",
+  "expected": 1
+ },
+ {
+  "label": "security does not write the pass counter",
+  "from": "const nx=Math.max(num(S.settings.nextPass)||1,n+1);if(nx!==num(S.settings.nextPass)){",
+  "to": "const nx=Math.max(num(S.settings.nextPass)||1,n+1);if(roleOf()!==\"security\"&&nx!==num(S.settings.nextPass)){",
+  "expected": 1
+ },
+ {
+  "label": "security role description",
+  "from": "desc:\"Gate only: sees leave-out passes, records when a student leaves and returns (signed by the guard) and sees visiting days. No fees, marks or student files.\"",
+  "to": "desc:\"Gate and leave-out passes: issues passes, records when a student leaves and returns (signed by the guard) and sees visiting days. No fees, marks or student files.\"",
+  "expected": 1
+ },
+ {
+  "label": "owners listed as owners, not as waiting",
+  "from": "const pending=ids.filter(id=>!roles[id]||!ACCESS_ROLES[roles[id].role]),set=ids.filter(id=>roles[id]&&ACCESS_ROLES[roles[id].role]);",
+  "to": "const isOwn=id=>!!(P[id]&&P[id].owner),pending=ids.filter(id=>!isOwn(id)&&(!roles[id]||!ACCESS_ROLES[roles[id].role])),set=ids.filter(id=>!isOwn(id)&&roles[id]&&ACCESS_ROLES[roles[id].role]),owners=ids.filter(isOwn);",
+  "expected": 1
+ },
+ {
+  "label": "owner rows in the access list",
+  "from": "${set.map(row).join(\"\")}</div>",
+  "to": "${owners.map(id=>`<div class=\"remind\"><img alt=\"\" src=\"${(P[id]&&P[id].avatarUrl)||\"\"}\" style=\"width:34px;height:34px;border-radius:50%;flex:none\"><span class=\"main\"><span class=\"t\" style=\"font-weight:700\">${esc(nm(id))}</span><span class=\"s note\">${P[id]&&P[id].email?esc(P[id].email)+\" · \":\"\"}Full control</span></span><span class=\"pill good\">Owner</span></div>`).join(\"\")}\n    ${set.map(row).join(\"\")}</div>",
+  "expected": 1
+ },
+ {
+  "label": "remove-someone wording",
+  "from": "<p class=\"note\">To remove someone completely, set them to <b>No access</b> here and also remove them in <b>Share</b>.</p>",
+  "to": "<p class=\"note\">To remove someone, set their role to No access here.</p>",
+  "expected": 1
+ },
+ {
+  "label": "search heading",
+  "from": "<h2>Find someone in your organization</h2>",
+  "to": "<h2>Find someone by name or email</h2>",
+  "expected": 1
+ },
+ {
+  "label": "search empty text",
+  "from": "<span class=\"note\">Nobody found. People outside your organization appear under Waiting once they open the system.</span>",
+  "to": "<span class=\"note\">Nobody found. People appear here once they have created an account.</span>",
   "expected": 1
  }
 ]

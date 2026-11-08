@@ -247,8 +247,8 @@
       var uu = (ids || []).map(strip).filter(isUuid);
       var out = {};
       if (!uu.length) return out;
-      var r = await sb.from("profiles").select(ME && ME.isOwner ? "id,name,avatar_url,email" : "id,name,avatar_url").in("id", uu);
-      (r.data || []).forEach(function (p) { out[PREFIX + p.id] = { name: p.name || "Unnamed", avatarUrl: p.avatar_url || avatar(p.name), email: p.email || "" }; });
+      var r = await sb.from("profiles").select(ME && ME.isOwner ? "id,name,avatar_url,email,is_owner" : "id,name,avatar_url").in("id", uu);
+      (r.data || []).forEach(function (p) { out[PREFIX + p.id] = { name: p.name || "Unnamed", avatarUrl: p.avatar_url || avatar(p.name), email: p.email || "", owner: p.is_owner === true }; });
       return out;
     },
     search: async function (q) {

@@ -1,4 +1,7 @@
    *.zip
    manahil-backend-kit/
    manahil-removed/
+   manahil-update-4/
    node_modules/
+   Ssh-key/
+   Ssh-Key.pub/

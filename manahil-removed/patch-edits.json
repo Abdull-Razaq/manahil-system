@@ -1,0 +1,129 @@
+[
+ {
+  "label": "load Supabase + adapter",
+  "from": "<script>try{document.documentElement.setAttribute(\"data-theme\",\"light\")}catch(_){}</script>",
+  "to": "<!-- mms-backend -->\n<script src=\"https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js\"></script>\n<script src=\"config.js\"></script>\n<script src=\"claude-shim.js\"></script>\n<script>try{document.documentElement.setAttribute(\"data-theme\",\"light\")}catch(_){}</script>",
+  "expected": 1
+ },
+ {
+  "label": "nobody is owner before sign-in",
+  "from": "function roleOf(){if(!ME)return\"owner\";",
+  "to": "function roleOf(){if(!ME)return\"loading\";",
+  "expected": 1
+ },
+ {
+  "label": "owner buttons need a real owner",
+  "from": "const isOwner=()=>!ME||ME.isOwner!==false;",
+  "to": "const isOwner=()=>!!ME&&ME.isOwner===true;",
+  "expected": 1
+ },
+ {
+  "label": "connection message",
+  "from": "<span>Records can't be saved in this view. Open the page in Claude while signed in to keep your records.</span>",
+  "to": "<span>Could not connect to the database. Check your internet connection and reload the page.</span>",
+  "expected": 1
+ },
+ {
+  "label": "parent steps, line 1",
+  "from": "1. Share the link with the parent (the link must be set to <b>Anyone with the link</b>, or invite them as <b>Viewer</b>). They sign in to Claude and open it.",
+  "to": "1. Give the parent the website address. They create an account and sign in.",
+  "expected": 1
+ },
+ {
+  "label": "staff request note",
+  "from": " Staff must first be shared the system as <b>Editor</b>.",
+  "to": "",
+  "expected": 1
+ },
+ {
+  "label": "request failed message",
+  "from": "You need to be shared the system as Editor first. Ask the owner.",
+  "to": "Your request could not be sent. Check your connection and try again.",
+  "expected": 1
+ },
+ {
+  "label": "access sheet title",
+  "from": "<b>Adding someone takes two steps</b>",
+  "to": "<b>How people get access</b>",
+  "expected": 1
+ },
+ {
+  "label": "access sheet step 1",
+  "from": "<span class=\"note\">1. Staff (Manager, Finance, Teacher, Security): tap <b>Share</b>, enter their email and set them as <b>Editor</b>. Without this they can't see any records.</span>",
+  "to": "<span class=\"note\">1. Staff create an account on the sign-in page and tap the access they need. They then appear below under Waiting.</span>",
+  "expected": 1
+ },
+ {
+  "label": "access sheet step 2",
+  "from": "<span class=\"note\">2. When they open the link they pick the access they need and appear below under <b>Waiting</b>. Tap <b>Approve</b> or choose another role.</span>",
+  "to": "<span class=\"note\">2. Tap Approve, or choose another role from the list. Until you do, they can see nothing.</span>",
+  "expected": 1
+ },
+ {
+  "label": "settings sign-in text",
+  "from": ":\"\"}The Manahil Management System uses Claude sign-in, so there is no separate password to share or forget. Only people you add can open it.</p>",
+  "to": ":\"\"}People create their own account with an email and password. They can see nothing until you give them a role.</p>",
+  "expected": 1
+ },
+ {
+  "label": "settings share steps",
+  "from": "<b>To give your accountant access:</b>",
+  "until": "outside editors out of the records.</p>",
+  "to": "<b>To give someone access:</b></p>\n   <ol class=\"steps\"><li>Ask them to open the system's web address and tap Create account.</li><li>They tap the access they need on the waiting screen.</li><li>Tap Manage who can use the system above and approve them.</li></ol>\n   <p class=\"note\">To remove someone, set their role to No access in that list.</p>",
+  "expected": 1
+ },
+ {
+  "label": "waiting-people banner",
+  "from": "if(RL===\"owner\"&&live)h+=reqBanner();",
+  "to": "if(RL===\"owner\"&&live)h+=reqBanner()+waitBanner();",
+  "expected": 1
+ },
+ {
+  "label": "waiting-people banner function",
+  "from": "function reqBanner(){",
+  "to": "function waitBanner(){const R=(S.access&&S.access.roles)||{};const W=(S.visitors||[]).filter(v=>v.want&&ACCESS_ROLES[v.want]&&!(R[v.id]&&ACCESS_ROLES[R[v.id].role])&&!(ME&&v.id===ME.id));return W.length?`<div class=\"banner\" style=\"background:var(--gold-soft);color:var(--accent)\"><span>👥 ${W.length===1?\"1 person is\":W.length+\" people are\"} waiting for access.</span><button data-action=\"access\">Review</button></div>`:\"\"}\nfunction reqBanner(){",
+  "expected": 1
+ },
+ {
+  "label": "banner refreshes when a request arrives",
+  "from": "db.collection(\"visitors\").onSnapshot(s=>{S.visitors=docs(s);if(!$(\"#scrim\").hidden&&$(\"#accHits\"))accessSheet()},()=>{});",
+  "to": "db.collection(\"visitors\").onSnapshot(s=>{S.visitors=docs(s);if(!$(\"#scrim\").hidden&&$(\"#accHits\"))accessSheet();else if(roleOf()===\"owner\")rr()},()=>{});",
+  "expected": 1
+ },
+ {
+  "label": "email and first-opened date in the access list",
+  "from": "<span class=\"s note\">${v?`Last opened ${fmtDate(v.lastSeen)}`:\"Hasn't opened the system yet\"}",
+  "to": "<span class=\"s note\">${P[id]&&P[id].email?esc(P[id].email)+\" · \":\"\"}${v?`Last opened ${fmtDate(v.lastSeen)}${v.firstSeen?\" · First opened \"+fmtDate(v.firstSeen):\"\"}`:\"Hasn't opened the system yet\"}",
+  "expected": 1
+ },
+ {
+  "label": "Settings button label",
+  "from": "$(\"#termBtn\").textContent=mLabel(M())+\" ⚙\";liveBadge();",
+  "to": "$(\"#termBtn\").textContent=\"⚙ Settings\";liveBadge();",
+  "expected": 1
+ },
+ {
+  "label": "Settings hidden while waiting for access",
+  "from": "[\"#termBtn\",\"#pdfLangBtn\"].forEach(q=>{const x=$(q);if(x)x.hidden=!!pm});",
+  "to": "[\"#termBtn\",\"#pdfLangBtn\"].forEach(q=>{const x=$(q);if(x)x.hidden=q===\"#termBtn\"?true:!!pm});",
+  "expected": 1
+ },
+ {
+  "label": "Settings visible to the owner only",
+  "from": "[\"#termBtn\",\"#pdfLangBtn\"].forEach(q=>{const x=$(q);if(x)x.hidden=false});",
+  "to": "[\"#termBtn\",\"#pdfLangBtn\"].forEach(q=>{const x=$(q);if(x)x.hidden=q===\"#termBtn\"&&!isOwner()});",
+  "expected": 1
+ },
+ {
+  "label": "Settings refuses non-owners",
+  "from": "case\"settings\":settingsSheet();break;",
+  "to": "case\"settings\":if(!isOwner()){toast(\"Settings are for the owner only.\");break}settingsSheet();break;",
+  "expected": 1
+ },
+ {
+  "label": "Arabic for the new and changed sentences",
+  "from": "const AR={\"MANAHIL EDUCATION CENTER\":",
+  "to": "const AR={\"Could not connect to the database. Check your internet connection and reload the page.\":\"تعذّر الاتصال بقاعدة البيانات. تحقّق من اتصالك بالإنترنت ثم أعد تحميل الصفحة.\",\"1. Give the parent the website address. They create an account and sign in.\":\"1. أعطِ ولي الأمر عنوان الموقع. ينشئ حسابًا ثم يسجّل الدخول.\",\"Your request could not be sent. Check your connection and try again.\":\"تعذّر إرسال طلبك. تحقّق من اتصالك وحاول مرة أخرى.\",\"How people get access\":\"كيف يحصل الأشخاص على الصلاحية\",\"1. Staff create an account on the sign-in page and tap the access they need. They then appear below under Waiting.\":\"1. ينشئ الموظفون حسابًا في صفحة تسجيل الدخول ويختارون الصلاحية التي يحتاجونها، ثم يظهرون أدناه تحت «بالانتظار».\",\"2. Tap Approve, or choose another role from the list. Until you do, they can see nothing.\":\"2. اضغط «اعتماد» أو اختر دورًا آخر من القائمة. وإلى أن تفعل ذلك لن يتمكنوا من رؤية أي شيء.\",\"{}People create their own account with an email and password. They can see nothing until you give them a role.\":\"{}ينشئ الأشخاص حساباتهم بأنفسهم بالبريد الإلكتروني وكلمة المرور، ولا يرون أي شيء حتى تمنحهم دورًا.\",\"To give someone access:\":\"لمنح شخص صلاحية الوصول:\",\"Ask them to open the system's web address and tap Create account.\":\"اطلب منهم فتح عنوان النظام والضغط على «إنشاء حساب».\",\"They tap the access they need on the waiting screen.\":\"يختارون الصلاحية التي يحتاجونها في شاشة الانتظار.\",\"Tap Manage who can use the system above and approve them.\":\"اضغط «إدارة من يمكنه استخدام النظام» أعلاه ثم وافق عليهم.\",\"To remove someone, set their role to No access in that list.\":\"لإزالة شخص، اجعل دوره «بلا صلاحية» في تلك القائمة.\",\"👥 1 person is waiting for access.\":\"👥 شخص واحد ينتظر الصلاحية.\",\"👥 {} people are waiting for access.\":\"👥 {} أشخاص ينتظرون الصلاحية.\",\"First opened {}\":\"أول فتح {}\",\"⚙ Settings\":\"⚙ الإعدادات\",\"Settings are for the owner only.\":\"الإعدادات للمالك فقط.\",\"Approve {}\":\"اعتماد {}\",\"MANAHIL EDUCATION CENTER\":",
+  "expected": 1
+ }
+]
